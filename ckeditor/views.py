@@ -7,7 +7,9 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from ckeditor.settings import CKEDITOR_BROWSEABLE_UPLOADED_IMAGES
+from ckeditor.settings import CKEDITOR_BROWSEABLE_UPLOADED_IMAGES, CKEDITOR_IMAGE_MAX_WIDTH, \
+    CKEDITOR_IMAGE_MAX_HEIGHT, CKEDITOR_IMAGE_AUTORESIZE_FUNCTION
+from django.core.exceptions import ImproperlyConfigured
 
 try:
     from PIL import Image, ImageOps
@@ -140,6 +142,13 @@ def upload(request):
     for chunk in upload.chunks():
         out.write(chunk)
     out.close()
+
+    if CKEDITOR_IMAGE_MAX_WIDTH or CKEDITOR_IMAGE_MAX_HEIGHT:
+        if not CKEDITOR_IMAGE_AUTORESIZE_FUNCTION:
+            raise ImproperlyConfigured("You must set CKEDITOR_IMAGE_AUTORESIZE_FUNCTION "
+                "in your settings.py")
+        else:
+            CKEDITOR_IMAGE_AUTORESIZE_FUNCTION(upload_filename)
 
     if CKEDITOR_BROWSEABLE_UPLOADED_IMAGES:
         create_thumbnail(upload_filename)

@@ -41,9 +41,9 @@ CKEDITOR.editorConfig = function( config ) {
     config.removeDialogTabs = 'image:advanced;image:Link;link:advanced;link:upload';
     config.linkShowTargetTab = false;
 
-    // In CKEditor 4.1 or higher you need to disable ACF (Advanced Content Filter)
-    // to make Youtube plugin work:
-    config.allowedContent = true;
+    // Code not produced by CKEditor will be stripped to prevent malicious attacks
+    config.allowedContent = false;
+    config.extraAllowedContent = 'iframe[*]';
 };
 
 CKEDITOR.on('dialogDefinition', function(ev) {

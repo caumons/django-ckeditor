@@ -43,7 +43,7 @@ CKEDITOR.editorConfig = function( config ) {
 
     // Code not produced by CKEditor will be stripped to prevent malicious attacks
     config.allowedContent = false;
-    config.extraAllowedContent = 'iframe[*]; div[*]';
+    config.extraAllowedContent = 'iframe[*]; div[*]{*}(*)';
 };
 
 CKEDITOR.on('dialogDefinition', function(ev) {

@@ -148,7 +148,8 @@ def upload(request):
             raise ImproperlyConfigured("You must set CKEDITOR_IMAGE_AUTORESIZE_FUNCTION "
                 "in your settings.py")
         else:
-            CKEDITOR_IMAGE_AUTORESIZE_FUNCTION(upload_filename)
+            CKEDITOR_IMAGE_AUTORESIZE_FUNCTION(upload_filename, CKEDITOR_IMAGE_MAX_WIDTH,
+                CKEDITOR_IMAGE_MAX_HEIGHT)
 
     if CKEDITOR_BROWSEABLE_UPLOADED_IMAGES:
         create_thumbnail(upload_filename)

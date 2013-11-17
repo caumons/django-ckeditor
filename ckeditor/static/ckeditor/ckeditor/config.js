@@ -44,6 +44,11 @@ CKEDITOR.editorConfig = function( config ) {
     // Code not produced by CKEditor will be stripped to prevent malicious attacks
     config.allowedContent = false;
     config.extraAllowedContent = 'iframe[*]; div[*]; img[!src,alt]; *(*){*};';
+
+    // Allow <i></i> to use Font Awesome icons
+    // Thanks to: http://stackoverflow.com/questions/18250404/ckeditor-strips-i-tag/18254082
+    config.protectedSource.push(/<i[\s\S]*?\>/g);  //allows beginning <i> tag
+    config.protectedSource.push(/<\/i\>/g);  //allows ending </i> tag
 };
 
 CKEDITOR.on('dialogDefinition', function(ev) {

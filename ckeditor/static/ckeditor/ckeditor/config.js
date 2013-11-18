@@ -46,9 +46,8 @@ CKEDITOR.editorConfig = function( config ) {
     config.extraAllowedContent = 'iframe[*]; div[*]; img[!src,alt]; *(*){*};';
 
     // Allow <i></i> to use Font Awesome icons
-    // Thanks to: http://stackoverflow.com/questions/18250404/ckeditor-strips-i-tag/18254082
-    config.protectedSource.push(/<i[\s\S]*?\>/g);  //allows beginning <i> tag
-    config.protectedSource.push(/<\/i\>/g);  //allows ending </i> tag
+    // Original idea: http://stackoverflow.com/questions/18250404/ckeditor-strips-i-tag/18254082
+    config.protectedSource.push(/<i\sclass="[\S]*"\><\/i\>/g);
 };
 
 CKEDITOR.on('dialogDefinition', function(ev) {

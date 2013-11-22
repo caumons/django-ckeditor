@@ -43,7 +43,7 @@ CKEDITOR.editorConfig = function( config ) {
 
     // Code not produced by CKEditor will be stripped to prevent malicious attacks
     config.allowedContent = false;
-    config.extraAllowedContent = 'iframe[*]; div[*]; img[!src,alt]; *(*){*};';
+    config.extraAllowedContent = 'iframe[*]; div[*]; img[!src, alt, width, height]; *(*){*};';
 
     // Allow <i></i> to use Font Awesome icons
     // Original idea: http://stackoverflow.com/questions/18250404/ckeditor-strips-i-tag/18254082

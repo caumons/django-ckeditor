@@ -10,6 +10,7 @@ from django.template import RequestContext
 from ckeditor.settings import CKEDITOR_BROWSEABLE_UPLOADED_IMAGES, CKEDITOR_IMAGE_MAX_WIDTH, \
     CKEDITOR_IMAGE_MAX_HEIGHT, CKEDITOR_IMAGE_AUTORESIZE_FUNCTION
 from django.core.exceptions import ImproperlyConfigured
+from django.utils.text import slugify
 
 try:
     from PIL import Image, ImageOps
@@ -107,7 +108,8 @@ def get_upload_filename(upload_name, user):
         os.makedirs(upload_path)
 
     # Get available name and return.
-    return get_available_name(os.path.join(upload_path, upload_name))
+    img_name, img_ext = os.path.splitext(upload_name)
+    return get_available_name(os.path.join(upload_path, slugify(img_name) + img_ext))
 
 
 @csrf_exempt

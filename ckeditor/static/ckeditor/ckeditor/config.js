@@ -45,6 +45,9 @@ CKEDITOR.editorConfig = function( config ) {
     config.allowedContent = false;
     config.extraAllowedContent = 'iframe[*]; div[*]; img[!src, alt, width, height]; *(*){*};';
 
+    // Don't use HTML entities
+    config.entities = false;
+
     // Allow <i></i> to use Font Awesome icons
     // Original idea: http://stackoverflow.com/questions/18250404/ckeditor-strips-i-tag/18254082
     config.protectedSource.push(/<i\sclass="[\S]*"\><\/i\>/g);

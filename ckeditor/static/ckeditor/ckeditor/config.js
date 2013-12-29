@@ -43,7 +43,7 @@ CKEDITOR.editorConfig = function( config ) {
 
     // Code not produced by CKEditor will be stripped to prevent malicious attacks
     config.allowedContent = false;
-    config.extraAllowedContent = 'iframe[*]; div[*]; img[!src, alt, width, height, title]; code; *(*){*};';
+    config.extraAllowedContent = 'iframe[*]; div[*]; img[!src, alt, width, height, title]; code; span; *(*){*};';
 
     // Don't use HTML entities
     config.entities = false;
